@@ -6,3 +6,6 @@ __pycache__/
 *.keystore
 *.jks
 .godot/
+
+# Local web export output (published via gh-pages branch)
+build/
