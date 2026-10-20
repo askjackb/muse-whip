@@ -1,0 +1,8 @@
+# This repository is a specification handoff.
+.DS_Store
+__pycache__/
+.env
+.env.*
+*.keystore
+*.jks
+.godot/

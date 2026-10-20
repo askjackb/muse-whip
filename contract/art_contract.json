@@ -1,0 +1,146 @@
+{
+  "contract_version": "0.2.0",
+  "authority": "docs/ART_CONTRACT.md (rules), docs/ASSET_BRIEFS.md (inventory, canvases, pivots, durations). tools/contract-check.mjs fails when this file disagrees with ASSET_BRIEFS.md.",
+  "frames_layout": "<frames_root>/<clip_id>/f000.png, f001.png, ... (delivered frames, before atlas packing, contract canvas size)",
+  "hand_sockets_layout": "<frames_root>/hand_sockets.json: { \"<hero attack clip id>\": [[x, y], ...one per frame, source px on the body canvas] }. Body and whip canvases share the foot pivot (256, 448), so the same coordinates locate the socket on the whip canvas.",
+
+  "measurement": {
+    "ink_alpha": 40,
+    "attach_px": 8,
+    "debris_min_area_px": 24,
+    "edge_px": 2,
+    "head_band": 0.12,
+    "boot_band": 0.08,
+    "leg_zone": [0.55, 0.94],
+    "boot_ratio_max": 0.60,
+    "leg_dip_max": 0.50,
+    "head_tol": 0.05,
+    "pop_size": 0.06,
+    "pop_height": 0.12,
+    "pop_height_classes": ["stand", "stride", "crouch", "creature"],
+    "clip_consistency": 0.06,
+    "clip_consistency_strict_classes": ["stand", "stride", "crouch"],
+    "cloth_below_pivot_flag_px": 6,
+    "normalise_scale_range": [0.85, 1.18]
+  },
+
+  "pose_classes": {
+    "stand":        { "height_ref": "design", "height": [0.97, 1.03], "size": [0.92, 1.08], "foot_tol_px": 2, "head": true,  "lower_body": true },
+    "stride":       { "height_ref": "design", "height": [0.94, 1.03], "size": [0.92, 1.08], "foot_tol_px": 2, "head": true,  "lower_body": true },
+    "strike":       { "height_ref": "design", "height": [0.90, 1.20], "size": [0.92, 1.08], "foot_tol_px": 2, "head": false, "lower_body": true },
+    "crouch":       { "height_ref": "crouch", "height": [0.95, 1.05], "size": [0.80, 1.00], "foot_tol_px": 2, "head": true,  "lower_body": false },
+    "crouch_strike":{ "height_ref": "crouch", "height": [0.90, 1.20], "size": [0.80, 1.05], "foot_tol_px": 2, "head": false, "lower_body": false },
+    "transition":   { "height_ref": "range",  "height": ["crouch*0.95", "design*1.03"], "size": [0.80, 1.08], "foot_tol_px": 2, "head": true, "lower_body": false },
+    "air":          { "height_ref": "design", "height": [0.70, 1.15], "size": [0.90, 1.10], "foot_tol_px": 2, "head": false, "lower_body": false },
+    "impact":       { "height_ref": "design", "height": [0.25, 1.05], "size": [0.85, 1.12], "foot_tol_px": 2, "head": false, "lower_body": false },
+    "collapse":     { "height_ref": "design", "height": [0.15, 1.05], "size": [0.70, 1.12], "foot_tol_px": 2, "head": false, "lower_body": false },
+    "dissolve":     { "height_ref": null,     "height": null,         "size": null,         "foot_tol_px": 6, "head": false, "lower_body": false },
+    "creature":     { "height_ref": "design", "height": [0.85, 1.15], "size": [0.88, 1.12], "foot_tol_px": 2, "head": false, "lower_body": false }
+  },
+
+  "actors": {
+    "hero":    { "canvas": [512, 512], "pivot": [256, 448], "align": "feet",   "design_height": 224, "crouch_height": 140, "head_ratio": [0.14, 0.20], "has_legs": true,  "reference": { "clip": "style_hero_neutral", "class": "stand" } },
+    "pursuer": { "canvas": [320, 256], "pivot": [128, 224], "align": "feet",   "design_height": 112, "head_ratio": null, "has_legs": true,  "reference": { "clip": "pursuer_patrol_walk", "class": "creature" } },
+    "swooper": { "canvas": [384, 256], "pivot": [192, 128], "align": "centre", "design_height": 170, "head_ratio": null, "has_legs": false, "reference": { "clip": "swooper_cruise", "class": "creature" } },
+    "ranged":  { "canvas": [256, 352], "pivot": [128, 320], "align": "feet",   "design_height": 300, "head_ratio": null, "has_legs": false, "reference": { "clip": "ranged_idle", "class": "creature" } },
+    "boss":    { "canvas": [512, 576], "pivot": [176, 512], "align": "feet",   "design_height": 352, "head_ratio": [0.12, 0.22], "has_legs": true,  "reference": { "clip": "boss_walk", "class": "stride" } }
+  },
+
+  "clips": {
+    "style_hero_neutral":   { "actor": "hero", "ms": [0], "loop": false, "pose": "stand", "note": "style-lock identity reference (ART_BIBLE §8 brief 1); 1 frame; duration not applicable" },
+
+    "hero_idle":            { "actor": "hero", "ms": [125,125,125,125,125,125,125,125], "loop": true,  "pose": "stand" },
+    "hero_walk":            { "actor": "hero", "ms": [80,80,80,80,80,80,80,80,80,80], "loop": true, "pose": "stride" },
+    "hero_start_move":      { "actor": "hero", "ms": [50,50,50], "loop": false, "pose": "stride" },
+    "hero_stop_move":       { "actor": "hero", "ms": [50,50,50], "loop": false, "pose": "stride" },
+    "hero_turn":            { "actor": "hero", "ms": [50,50,50], "loop": false, "pose": "stride" },
+    "hero_crouch_enter":    { "actor": "hero", "ms": [50,50,50,50], "loop": false, "pose": "transition" },
+    "hero_crouch_idle":     { "actor": "hero", "ms": [150,150,150,150,150,150], "loop": true, "pose": "crouch" },
+    "hero_crouch_exit":     { "actor": "hero", "ms": [50,50,50,50], "loop": false, "pose": "transition" },
+    "hero_jump_takeoff":    { "actor": "hero", "ms": [40,40,40], "loop": false, "pose": "transition", "head": false },
+    "hero_jump_rise":       { "actor": "hero", "ms": [60,60,60,60], "loop": false, "pose": "air" },
+    "hero_jump_apex":       { "actor": "hero", "ms": [50,50,50], "loop": false, "pose": "air" },
+    "hero_fall":            { "actor": "hero", "ms": [100,100,100,100], "loop": true, "pose": "air" },
+    "hero_land":            { "actor": "hero", "ms": [40,40,40,40], "loop": false, "pose": "transition" },
+    "hero_attack_ground":   { "actor": "hero", "ms": [75,75,50,50,62.5,62.5,62.5,62.5], "loop": false, "pose": "strike", "sync": "whip_attack_ground", "hand_sockets": true },
+    "hero_attack_air":      { "actor": "hero", "ms": [75,75,50,50,62.5,62.5,62.5,62.5], "loop": false, "pose": "air", "sync": "whip_attack_air", "hand_sockets": true },
+    "hero_attack_crouch":   { "actor": "hero", "ms": [75,75,50,50,62.5,62.5,62.5,62.5], "loop": false, "pose": "crouch_strike", "sync": "whip_attack_crouch", "hand_sockets": true },
+    "hero_hurt_recoil":     { "actor": "hero", "ms": [50,50,50,50], "loop": false, "pose": "impact" },
+    "hero_knockback":       { "actor": "hero", "ms": [75,75,75,75], "loop": false, "pose": "impact" },
+    "hero_knockdown":       { "actor": "hero", "ms": [60,60,60,60,60,60], "loop": false, "pose": "impact" },
+    "hero_get_up":          { "actor": "hero", "ms": [75,75,75,75,75,75], "loop": false, "pose": "impact" },
+    "hero_death":           { "actor": "hero", "ms": [80,80,80,80,80,80,80,80,80,80], "loop": false, "pose": ["collapse","collapse","collapse","collapse","collapse","collapse","collapse","collapse","dissolve","dissolve"] },
+
+    "whip_attack_ground":   { "actor": "whip", "ms": [75,75,50,50,62.5,62.5,62.5,62.5], "loop": false, "body": "hero_attack_ground", "coiled": [0, 7], "active": [2, 3] },
+    "whip_attack_air":      { "actor": "whip", "ms": [75,75,50,50,62.5,62.5,62.5,62.5], "loop": false, "body": "hero_attack_air", "coiled": [0, 7], "active": [2, 3] },
+    "whip_attack_crouch":   { "actor": "whip", "ms": [75,75,50,50,62.5,62.5,62.5,62.5], "loop": false, "body": "hero_attack_crouch", "coiled": [0, 7], "active": [2, 3] },
+
+    "pursuer_idle":         { "actor": "pursuer", "ms": [150,150,150,150,150,150], "loop": true, "pose": "creature" },
+    "pursuer_patrol_walk":  { "actor": "pursuer", "ms": [90,90,90,90,90,90,90,90], "loop": true, "pose": "creature" },
+    "pursuer_alert":        { "actor": "pursuer", "ms": [75,75,75,75], "loop": false, "pose": "creature", "height": [0.85, 1.60], "note": "rear-up tell: vertical silhouette spike" },
+    "pursuer_approach_walk":{ "actor": "pursuer", "ms": [70,70,70,70,70,70,70,70], "loop": true, "pose": "creature" },
+    "pursuer_lunge_windup": { "actor": "pursuer", "ms": [100,100,75,75], "loop": false, "pose": "creature", "height": [0.50, 1.10] },
+    "pursuer_lunge":        { "actor": "pursuer", "ms": [80,80,80], "loop": false, "pose": "creature", "height": [0.45, 1.00] },
+    "pursuer_recovery":     { "actor": "pursuer", "ms": [150,150,150,150], "loop": false, "pose": "creature", "height": [0.60, 1.10] },
+    "pursuer_hurt":         { "actor": "pursuer", "ms": [60,60,60], "loop": false, "pose": "creature", "height": [0.70, 1.20] },
+    "pursuer_death":        { "actor": "pursuer", "ms": [80,80,80,80,80,80], "loop": false, "pose": ["collapse","collapse","collapse","collapse","dissolve","dissolve"] },
+
+    "swooper_perch_idle":   { "actor": "swooper", "ms": [150,150,150,150,150,150], "loop": true, "pose": "creature", "height": [0.60, 1.20] },
+    "swooper_cruise":       { "actor": "swooper", "ms": [90,90,90,90,90,90,90,90], "loop": true, "pose": "creature", "height": [0.60, 1.20], "note": "wingbeat changes the envelope; size is the stable measure" },
+    "swooper_dive_telegraph":{"actor": "swooper", "ms": [150,150,150,150], "loop": false, "pose": "creature", "height": [0.50, 1.45], "size": [0.60, 1.12], "note": "wing fold: wide cross to narrow dart; folded wings show less area" },
+    "swooper_dive":         { "actor": "swooper", "ms": [60,60,60,60], "loop": false, "pose": "creature", "height": [0.40, 1.20], "size": [0.60, 1.12] },
+    "swooper_recovery_climb":{"actor": "swooper", "ms": [150,150,150,150,150,150], "loop": false, "pose": "creature", "height": [0.60, 1.30] },
+    "swooper_hurt":         { "actor": "swooper", "ms": [60,60,60], "loop": false, "pose": "creature", "height": [0.50, 1.30] },
+    "swooper_death_fall":   { "actor": "swooper", "ms": [70,70,70,70,70], "loop": false, "pose": ["collapse","collapse","collapse","dissolve","dissolve"] },
+
+    "ranged_idle":          { "actor": "ranged", "ms": [150,150,150,150,150,150], "loop": true, "pose": "creature", "height": [0.95, 1.05] },
+    "ranged_aim":           { "actor": "ranged", "ms": [150,150,150,150,150,150], "loop": false, "pose": "creature", "height": [0.95, 1.05], "note": "aims level with one long arm; the hood stays the top of the silhouette" },
+    "ranged_fire":          { "actor": "ranged", "ms": [50,50,100], "loop": false, "pose": "creature", "height": [0.95, 1.05] },
+    "ranged_recover":       { "actor": "ranged", "ms": [100,100,100,100,100,100,100], "loop": false, "pose": "creature", "height": [0.90, 1.05] },
+    "ranged_hurt":          { "actor": "ranged", "ms": [60,60,60], "loop": false, "pose": "creature", "height": [0.85, 1.05] },
+    "ranged_death":         { "actor": "ranged", "ms": [80,80,80,80,80,80], "loop": false, "pose": ["collapse","collapse","collapse","collapse","dissolve","dissolve"] },
+
+    "boss_idle":            { "actor": "boss", "ms": [125,125,125,125,125,125,125,125], "loop": true, "pose": "stand" },
+    "boss_walk":            { "actor": "boss", "ms": [80,80,80,80,80,80,80,80], "loop": true, "pose": "stride" },
+    "boss_turn":            { "actor": "boss", "ms": [75,75,75,75], "loop": false, "pose": "stride" },
+    "boss_strike_windup":   { "actor": "boss", "ms": [100,100,100,100,100,100,100], "loop": false, "pose": "strike", "height": [0.90, 1.40], "note": "arm rises and holds; silhouette grows by about a third" },
+    "boss_strike_execute":  { "actor": "boss", "ms": [50,50,50,50], "loop": false, "pose": "strike" },
+    "boss_strike_recover":  { "actor": "boss", "ms": [200,200,200,200,150,150], "loop": false, "pose": "strike" },
+    "boss_hazard_windup":   { "actor": "boss", "ms": [150,150,150,150,150,150,150,150], "loop": false, "pose": "strike", "height": [0.90, 1.40] },
+    "boss_hazard_execute":  { "actor": "boss", "ms": [100,100,100,100], "loop": false, "pose": "strike" },
+    "boss_hazard_recover":  { "actor": "boss", "ms": [150,150,150,150,150,150], "loop": false, "pose": "strike" },
+    "boss_hurt":            { "actor": "boss", "ms": [70,70,60], "loop": false, "pose": "stand", "height": [0.92, 1.03] },
+    "boss_death":           { "actor": "boss", "ms": [90,90,90,90,90,90,90,90,90,90,90,90], "loop": false, "pose": ["collapse","collapse","collapse","collapse","collapse","collapse","collapse","collapse","collapse","dissolve","dissolve","dissolve"] },
+
+    "projectile_grave_shot":{ "actor": "vfx", "canvas": [64, 64], "anchor": [32, 32], "anchor_mode": "centre", "ms": [80,80,80], "loop": true, "size_curve": false, "max_extent_px": 60 },
+    "vfx_whip_impact":      { "actor": "vfx", "canvas": [192, 192], "anchor": [96, 96],  "anchor_mode": "centre", "ms": [40,40,40,50,50,60], "loop": false, "size_curve": true, "max_extent_px": 180 },
+    "vfx_enemy_defeat":     { "actor": "vfx", "canvas": [256, 256], "anchor": [128, 128], "anchor_mode": "centre", "ms": [70,70,70,70,70,70,70,70], "loop": false, "size_curve": true, "max_extent_px": 250 },
+    "vfx_checkpoint_activate":{"actor": "vfx", "canvas": [256, 384], "anchor": [128, 352], "anchor_mode": "base", "ms": [90,90,90,90,90,90,90,90], "loop": false, "size_curve": true, "max_extent_px": 380 },
+    "vfx_hazard_telegraph": { "actor": "vfx", "canvas": [320, 128], "anchor": [160, 112], "anchor_mode": "base", "ms": [300,300,300,300], "loop": false, "size_curve": false, "max_extent_px": 316, "note": "sustained telegraph, not a burst" },
+    "vfx_hazard_eruption":  { "actor": "vfx", "canvas": [320, 192], "anchor": [160, 176], "anchor_mode": "base", "ms": [60,60,70,70,70,70], "loop": false, "size_curve": true, "max_extent_px": 316 }
+  },
+
+  "whip": {
+    "canvas": [768, 512],
+    "pivot": [256, 448],
+    "socket_contact_px": 3,
+    "grip_centre_px": 6,
+    "root_zone_px": [20, 60],
+    "root_thickness_max_px": 12,
+    "tip_zone_px": 20,
+    "tip_thickness_max_px": 5,
+    "coil_max_px": 123,
+    "active_reach_min_px": 336,
+    "progression_tol_px": 4
+  },
+
+  "vfx": {
+    "border_px": 2,
+    "anchor_tol_px": 4,
+    "wobble": 0.10
+  },
+
+  "engine_drawn": {
+    "vfx_damage_indicator": "Screen-edge vignette drawn in engine code (ART_CONTRACT V-04). Never generated, never chroma-keyed."
+  }
+}
