@@ -1,0 +1,113 @@
+{
+  "hero_attack_ground": {
+    "socket": [
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ]
+    ],
+    "note": "Key-pose socket replicated per frame; per-frame hand tracking deferred (needs vision)"
+  },
+  "hero_attack_air": {
+    "socket": [
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ]
+    ],
+    "note": "Key-pose socket replicated per frame; per-frame hand tracking deferred (needs vision)"
+  },
+  "hero_attack_crouch": {
+    "socket": [
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ],
+      [
+        348,
+        285
+      ]
+    ],
+    "note": "Key-pose socket replicated per frame; per-frame hand tracking deferred (needs vision)"
+  }
+}

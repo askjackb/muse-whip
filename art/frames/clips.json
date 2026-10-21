@@ -12,9 +12,16 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png",
+      "f004.png",
+      "f005.png",
+      "f006.png",
+      "f007.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_attack_crouch": {
     "ms": [
@@ -29,9 +36,16 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png",
+      "f004.png",
+      "f005.png",
+      "f006.png",
+      "f007.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_attack_ground": {
     "ms": [
@@ -46,9 +60,16 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png",
+      "f004.png",
+      "f005.png",
+      "f006.png",
+      "f007.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_crouch_enter": {
     "ms": [
@@ -59,9 +80,12 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_crouch_exit": {
     "ms": [
@@ -72,9 +96,12 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_crouch_idle": {
     "ms": [
@@ -87,9 +114,14 @@
     ],
     "loop": true,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png",
+      "f004.png",
+      "f005.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_death": {
     "ms": [
@@ -106,9 +138,18 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png",
+      "f004.png",
+      "f005.png",
+      "f006.png",
+      "f007.png",
+      "f008.png",
+      "f009.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_fall": {
     "ms": [
@@ -119,9 +160,12 @@
     ],
     "loop": true,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_get_up": {
     "ms": [
@@ -134,9 +178,14 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png",
+      "f004.png",
+      "f005.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_hurt_recoil": {
     "ms": [
@@ -147,9 +196,12 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_idle": {
     "ms": [
@@ -164,9 +216,16 @@
     ],
     "loop": true,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png",
+      "f004.png",
+      "f005.png",
+      "f006.png",
+      "f007.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_jump_apex": {
     "ms": [
@@ -176,9 +235,11 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_jump_rise": {
     "ms": [
@@ -189,9 +250,12 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_jump_takeoff": {
     "ms": [
@@ -201,9 +265,11 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_knockback": {
     "ms": [
@@ -214,9 +280,12 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_knockdown": {
     "ms": [
@@ -229,9 +298,14 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png",
+      "f004.png",
+      "f005.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_land": {
     "ms": [
@@ -242,9 +316,12 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_start_move": {
     "ms": [
@@ -254,9 +331,11 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_stop_move": {
     "ms": [
@@ -266,9 +345,11 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_turn": {
     "ms": [
@@ -278,9 +359,11 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "hero_walk": {
     "ms": [
@@ -297,9 +380,18 @@
     ],
     "loop": true,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png",
+      "f004.png",
+      "f005.png",
+      "f006.png",
+      "f007.png",
+      "f008.png",
+      "f009.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "style_hero_neutral": {
     "ms": [
@@ -309,7 +401,7 @@
     "frames": [
       "f000.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "whip_attack_air": {
     "ms": [
@@ -324,9 +416,16 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png",
+      "f004.png",
+      "f005.png",
+      "f006.png",
+      "f007.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "whip_attack_crouch": {
     "ms": [
@@ -341,9 +440,16 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png",
+      "f004.png",
+      "f005.png",
+      "f006.png",
+      "f007.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   },
   "whip_attack_ground": {
     "ms": [
@@ -358,8 +464,15 @@
     ],
     "loop": false,
     "frames": [
-      "f000.png"
+      "f000.png",
+      "f001.png",
+      "f002.png",
+      "f003.png",
+      "f004.png",
+      "f005.png",
+      "f006.png",
+      "f007.png"
     ],
-    "status": "key_only"
+    "status": "complete"
   }
 }
