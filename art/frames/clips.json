@@ -1,3 +1,365 @@
 {
-  "style_hero_neutral": { "ms": [0], "loop": false }
+  "hero_attack_air": {
+    "ms": [
+      75,
+      75,
+      50,
+      50,
+      62.5,
+      62.5,
+      62.5,
+      62.5
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_attack_crouch": {
+    "ms": [
+      75,
+      75,
+      50,
+      50,
+      62.5,
+      62.5,
+      62.5,
+      62.5
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_attack_ground": {
+    "ms": [
+      75,
+      75,
+      50,
+      50,
+      62.5,
+      62.5,
+      62.5,
+      62.5
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_crouch_enter": {
+    "ms": [
+      50,
+      50,
+      50,
+      50
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_crouch_exit": {
+    "ms": [
+      50,
+      50,
+      50,
+      50
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_crouch_idle": {
+    "ms": [
+      150,
+      150,
+      150,
+      150,
+      150,
+      150
+    ],
+    "loop": true,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_death": {
+    "ms": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_fall": {
+    "ms": [
+      100,
+      100,
+      100,
+      100
+    ],
+    "loop": true,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_get_up": {
+    "ms": [
+      75,
+      75,
+      75,
+      75,
+      75,
+      75
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_hurt_recoil": {
+    "ms": [
+      50,
+      50,
+      50,
+      50
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_idle": {
+    "ms": [
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125
+    ],
+    "loop": true,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_jump_apex": {
+    "ms": [
+      50,
+      50,
+      50
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_jump_rise": {
+    "ms": [
+      60,
+      60,
+      60,
+      60
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_jump_takeoff": {
+    "ms": [
+      40,
+      40,
+      40
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_knockback": {
+    "ms": [
+      75,
+      75,
+      75,
+      75
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_knockdown": {
+    "ms": [
+      60,
+      60,
+      60,
+      60,
+      60,
+      60
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_land": {
+    "ms": [
+      40,
+      40,
+      40,
+      40
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_start_move": {
+    "ms": [
+      50,
+      50,
+      50
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_stop_move": {
+    "ms": [
+      50,
+      50,
+      50
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_turn": {
+    "ms": [
+      50,
+      50,
+      50
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "hero_walk": {
+    "ms": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80
+    ],
+    "loop": true,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "style_hero_neutral": {
+    "ms": [
+      0
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "whip_attack_air": {
+    "ms": [
+      75,
+      75,
+      50,
+      50,
+      62.5,
+      62.5,
+      62.5,
+      62.5
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "whip_attack_crouch": {
+    "ms": [
+      75,
+      75,
+      50,
+      50,
+      62.5,
+      62.5,
+      62.5,
+      62.5
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  },
+  "whip_attack_ground": {
+    "ms": [
+      75,
+      75,
+      50,
+      50,
+      62.5,
+      62.5,
+      62.5,
+      62.5
+    ],
+    "loop": false,
+    "frames": [
+      "f000.png"
+    ],
+    "status": "key_only"
+  }
 }
