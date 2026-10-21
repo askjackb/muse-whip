@@ -185,10 +185,10 @@ On pack approval, register here (empty until then): style-lock revision ID; the 
 
 | Field | Value |
 |---|---|
-| Style-lock revision | — (pending pack approval) |
-| Approved references | — |
-| Reviewer / date | — |
-| Evidence | — (VALIDATION V1 PENDING) |
+| Style-lock revision | `style_lock_r01` |
+| Approved references | `art/candidates/style_hero_neutral__r01__f000.png` (sha256 c0326f70…03d1e2b4119); `art/candidates/style_hero_attack_key__r01__f000.png` (sha256 6fa06bd9…7f824ca7f); `art/candidates/style_enemy_pursuer__r01__f000.png` (sha256 0c81ed06…09eda); `art/candidates/style_terrain_patch_3x3__r01__f000.png` (sha256 7dab8da1…de10d6f3496866); `art/candidates/style_env_mockup__r01__f000.png` (sha256 6088e496…f622c1d59b0bfefc8618f) |
+| Reviewer / date | Owner review (Jack) 2026-10-21 — fresh-reviewer LLM session waived by owner: local vision endpoint degraded (only 128px thumbnails answered; full-size review prompts burned repeatedly across two server restarts). Owner viewed the sprite lineup + env mockup and approved ("GO"). |
+| Evidence | audit-art.mjs `--only "^style_"` → 0 DEFECT, 0 FLAG (art/review/audit.md); manifest art/manifests/style_pack_r01.manifest.json |
 
 ## 10. What remains open
 
