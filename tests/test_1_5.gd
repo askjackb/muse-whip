@@ -209,19 +209,28 @@ func _t03() -> bool:
 	return true
 
 func _t04() -> bool:
+	# Reset process-global Input state before this test so a stale action
+	# from a previous test / previous suite cannot re-arm the jump buffer.
+	for action in InputMap.get_actions():
+		Input.action_release(action)
+	Input.flush_buffered_events()
+
 	var root := _new_root()
 	_add_floor(root, -2000, 640, 4000, 80, 1)
 	var p = PlayerScript.new()
 	p.position = Vector2(0, 600)
 	root.add_child(p)
+
 	_steps(p, 2)
 	Input.action_press("move_right")
 	_steps(p, 40)
+
 	var sx = p.position.x
 	var sy = p.position.y
 	var min_y = sy
 	var apex_frame := 0
 	var travel := -1.0
+
 	p.jump_buffer_timer = 0.1
 	for f in range(1, 91):
 		_step(p)
@@ -231,7 +240,12 @@ func _t04() -> bool:
 		if travel < 0.0 and p.position.y >= sy - 2.0 and p.velocity.y >= 0.0 and f > 3:
 			travel = p.position.x - sx
 			break
-	Input.action_release("move_right")
+
+	# Release/flush again so this test cannot contaminate later tests.
+	for action in InputMap.get_actions():
+		Input.action_release(action)
+	Input.flush_buffered_events()
+
 	var rise = sy - min_y
 	var apex_t := float(apex_frame) * DELTA
 	var ok := _within(rise, 128.0, 0.06) and _within(apex_t, 0.4, 0.06) and _within(travel, 192.0, 0.06)
