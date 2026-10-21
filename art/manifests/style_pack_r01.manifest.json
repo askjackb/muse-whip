@@ -1,0 +1,211 @@
+{
+  "pack": "style_pack",
+  "revision": "r01",
+  "assets": [
+    {
+      "id": "style_hero_neutral",
+      "state": "candidate",
+      "revision": "r01",
+      "brief": "docs/ART_BIBLE.md \u00a78 brief 1",
+      "style_lock": "pending (to be style_lock_r01 on approval)",
+      "tool": "qwen-image-2.1-turbo via local endpoint (desktop-u27gq8k :8080/v1/images/generations)",
+      "model": "qwen-image-2.1-turbo",
+      "seed": "unknown (endpoint does not expose)",
+      "prompt_record": "workspace tasks/g3_brief1_prompt2.txt (correction round 2 of 2); round 1 rejected: whip held in hand, mantle on both shoulders",
+      "reference_inputs": "none (this piece creates the identity reference)",
+      "canvas": [
+        512,
+        512
+      ],
+      "pivot": [
+        256,
+        448
+      ],
+      "density_px_per_unit": 2,
+      "frames": [
+        {
+          "path": "art/candidates/style_hero_neutral__r01__f000.png",
+          "ms": 0,
+          "sha256": "c0326f70aeba2b9dd0bfbc0b0494be294925d0e1b73b4a848b15d03d1e2b4119",
+          "bytes": 28198
+        }
+      ],
+      "frames_layout_copy": "art/frames/style_hero_neutral/f000.png",
+      "sockets": {
+        "hand_grip_measured_px": [
+          256,
+          329
+        ],
+        "hand_grip_units_rel_foot": [
+          0,
+          -59.5
+        ]
+      },
+      "collision_ref": "standing body 40x104 u centred (0,-52) \u2014 overlay art/previews/hero_neutral_overlay.png",
+      "alpha": "RGBA, magenta key extraction (#FF00FF requested; sampled key (213,45,173) approx), debris alpha<40 cleared",
+      "color_space": "sRGB",
+      "normalisation": {
+        "src_fig_h_px": 881,
+        "scale_factor": 0.2543,
+        "delivered_fig_h_px": 224
+      },
+      "review": "pending fresh-reviewer session"
+    },
+    {
+      "id": "style_hero_attack_key",
+      "state": "candidate",
+      "revision": "r01",
+      "brief": "docs/ART_BIBLE.md \u00a78 brief 2",
+      "style_lock": "pending",
+      "tool": "qwen-image-2.1-turbo via local endpoint",
+      "model": "qwen-image-2.1-turbo",
+      "seed": "unknown (endpoint does not expose)",
+      "prompt_record": "workspace tasks/g3_brief2_prompt.txt (round 1)",
+      "reference_inputs": "style_hero_neutral identity described in prompt text (endpoint has no image-input route used)",
+      "canvas": [
+        512,
+        512
+      ],
+      "pivot": [
+        256,
+        448
+      ],
+      "density_px_per_unit": 2,
+      "frames": [
+        {
+          "path": "art/candidates/style_hero_attack_key__r01__f000.png",
+          "ms": 0,
+          "sha256": "6fa06bd9df21417530bf518171030999693e0da80b881b24b07b3ef7f824ca7f",
+          "bytes": 44131
+        }
+      ],
+      "sockets": {
+        "hand_measured_px": [
+          348,
+          285
+        ],
+        "hand_units_rel_foot": [
+          46,
+          -81.5
+        ],
+        "hitbox_ref": "active region x +40..+168 u, y -82..-46 u \u2014 overlay art/previews/hero_attack_overlay.png"
+      },
+      "alpha": "RGBA, magenta key extraction, debris alpha<40 cleared",
+      "color_space": "sRGB",
+      "normalisation": {
+        "src_fig_h_px": 781,
+        "scale_factor": 0.2535,
+        "note": "same anatomy scale as neutral (0.2534 target)"
+      },
+      "review": "pending fresh-reviewer session"
+    },
+    {
+      "id": "style_enemy_pursuer",
+      "state": "candidate",
+      "revision": "r01",
+      "brief": "docs/ART_BIBLE.md \u00a78 brief 3",
+      "style_lock": "pending",
+      "tool": "qwen-image-2.1-turbo via local endpoint",
+      "model": "qwen-image-2.1-turbo",
+      "seed": "unknown (endpoint does not expose)",
+      "prompt_record": "workspace tasks/g3_brief3_prompt2.txt (correction round 2 of 2); round 1 rejected: head read as a dog (floppy ear, long snout) \u2014 brief 3 rejection 'reads as a natural animal'; rejected frame kept in art/rejected/",
+      "reference_inputs": "none (creates the pursuer identity reference)",
+      "canvas": [
+        320,
+        256
+      ],
+      "pivot": [
+        128,
+        224
+      ],
+      "density_px_per_unit": 2,
+      "frames": [
+        {
+          "path": "art/candidates/style_enemy_pursuer__r01__f000.png",
+          "ms": 0,
+          "sha256": "0c81ed064b8b44acb9347f4a9d7345972b7f3bc314bd17ab49c17c49a8f09eda",
+          "bytes": 23263
+        }
+      ],
+      "collision_ref": "proposed contact body 96x52 u at ground origin \u2014 overlay art/previews/pursuer_overlay.png",
+      "alpha": "RGBA, magenta key extraction, debris alpha<40 cleared",
+      "color_space": "sRGB",
+      "normalisation": {
+        "src_fig_h_px": 854,
+        "scale_factor": 0.2061,
+        "delivered_fig_h_px": 176,
+        "note": "alert pose height 176 px = 1.57x the 112 px patrol design height (brief cap 1.6x)"
+      },
+      "review": "pending fresh-reviewer session"
+    },
+    {
+      "id": "style_terrain_patch_3x3",
+      "state": "candidate",
+      "revision": "r01",
+      "brief": "docs/ART_BIBLE.md \u00a78 brief 4",
+      "style_lock": "pending",
+      "tool": "qwen-image-2.1-turbo via local endpoint",
+      "model": "qwen-image-2.1-turbo",
+      "seed": "unknown (endpoint does not expose)",
+      "prompt_record": "workspace tasks/g3_brief4_prompt.txt (round 1)",
+      "reference_inputs": "none (establishes the terrain material reference)",
+      "canvas": [
+        384,
+        384
+      ],
+      "pivot": "module grid origin at patch top-left",
+      "density_px_per_unit": 2,
+      "frames": [
+        {
+          "path": "art/candidates/style_terrain_patch_3x3__r01__f000.png",
+          "ms": 0,
+          "sha256": "7dab8da1648548b27408623ed1fc9d6a162413e51a7ee04441de10d6f3496866",
+          "bytes": 183105
+        }
+      ],
+      "collision_ref": "top edges = collision line \u2014 overlay art/previews/terrain_grid_overlay.png; seam check art/previews/terrain_tiled_3wide.png",
+      "alpha": "opaque (declared)",
+      "color_space": "sRGB",
+      "normalisation": {
+        "generated": "1024x1024",
+        "delivered": "384x384 downscale (Lanczos)"
+      },
+      "review": "pending fresh-reviewer session"
+    },
+    {
+      "id": "style_env_mockup",
+      "state": "candidate",
+      "revision": "r01",
+      "brief": "docs/ART_BIBLE.md \u00a78 brief 5",
+      "style_lock": "pending",
+      "tool": "qwen-image-2.1-turbo via local endpoint",
+      "model": "qwen-image-2.1-turbo",
+      "seed": "unknown (endpoint does not expose)",
+      "prompt_record": "workspace tasks/g3_brief5_prompt.txt (round 1; endpoint rejects non-square sizes, generated 1024x1024)",
+      "reference_inputs": "briefs 1/4 consumed as prompt text (same-session style description)",
+      "canvas": [
+        2560,
+        1440
+      ],
+      "pivot": "view origin top-left",
+      "density_px_per_unit": 2,
+      "frames": [
+        {
+          "path": "art/candidates/style_env_mockup__r01__f000.png",
+          "ms": 0,
+          "sha256": "6088e496dc8835a9d63d15355685c4875596340f966f622c1d59b0bfefc8618f",
+          "bytes": 1951944
+        }
+      ],
+      "collision_ref": "platform top edge \u2014 overlay art/previews/env_platform_overlay.png",
+      "alpha": "opaque (declared)",
+      "color_space": "sRGB",
+      "normalisation": {
+        "generated": "1024x1024",
+        "delivered": "centre band y250..826 cropped to 16:9, upscaled x2.5 to 2560x1440",
+        "quality_debt": "delivered resolution is upscaled, not native; crop also removed a cross finial the generator placed on the right tower (banned set dressing, ART_BIBLE \u00a75)"
+      },
+      "review": "pending fresh-reviewer session"
+    }
+  ]
+}
