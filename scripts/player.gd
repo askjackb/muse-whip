@@ -1,5 +1,16 @@
 extends CharacterBody2D
 
+var _sprite_clip_data: Dictionary = {}
+var _sprite_body: Sprite2D
+var _sprite_whip: Sprite2D
+var _sprite_frame_timer := 0.0
+var _sprite_frame_index := 0
+var _sprite_clip_id := ""
+var _sprite_loop := false
+var _sprite_durations: Array = []
+var _sprite_texture_cache: Dictionary = {}
+var _sprite_last_facing := 1
+
 signal state_changed(state: String)
 signal died
 signal hurt(amount: int, kind: String)
@@ -58,6 +69,20 @@ func _ready() -> void:
 	crouch_shape.position = Vector2(0, CROUCH_CENTER_Y)
 	add_child(crouch_shape)
 	crouch_shape.disabled = true
+	_sprite_body = Sprite2D.new()
+	_sprite_body.name = "BodySprite"
+	_sprite_body.z_index = 10
+	_sprite_body.centered = false
+	_sprite_body.position = Vector2(-256, -448)
+	add_child(_sprite_body)
+	_sprite_whip = Sprite2D.new()
+	_sprite_whip.name = "WhipSprite"
+	_sprite_whip.z_index = 11
+	_sprite_whip.centered = false
+	_sprite_whip.position = Vector2(-256, -448)
+	_sprite_whip.visible = false
+	add_child(_sprite_whip)
+	_sprite_load_clip_data()
 
 func _notification(what):
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
@@ -80,6 +105,7 @@ func _physics_process(delta):
 	_sync_combat()
 	_register_attack_hits()
 	_update_coyote(delta)
+	_update_sprite(delta)
 
 func _update_timers(delta):
 	if state == "attack_ground" or state == "attack_air" or state == "attack_crouch":
@@ -498,3 +524,151 @@ func _register_attack_hits() -> void:
 		return
 	for body in c.get_overlapping_bodies():
 		c._register_hit(body)
+
+
+func _sprite_load_clip_data() -> void:
+	var path := "res://art/frames/clips.json"
+	if not FileAccess.file_exists(path):
+		return
+	var file := FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		return
+	var text := file.get_as_text()
+	file.close()
+	var parsed = JSON.parse_string(text)
+	if typeof(parsed) == TYPE_DICTIONARY:
+		_sprite_clip_data = parsed
+
+
+func _update_sprite(delta: float) -> void:
+	if _sprite_clip_data.is_empty():
+		_sprite_body.visible = false
+		_sprite_whip.visible = false
+		return
+
+	var clip_id := "hero_" + state
+	if not _sprite_clip_data.has(clip_id):
+		_sprite_body.visible = false
+		_sprite_whip.visible = false
+		return
+
+	var clip_data = _sprite_clip_data[clip_id]
+	if typeof(clip_data) != TYPE_DICTIONARY:
+		_sprite_body.visible = false
+		_sprite_whip.visible = false
+		return
+
+	var durations: Array = clip_data.get("ms", [])
+	if durations.is_empty():
+		_sprite_body.visible = false
+		_sprite_whip.visible = false
+		return
+
+	var loop: bool = clip_data.get("loop", false)
+
+	if _sprite_clip_id != clip_id:
+		_sprite_clip_id = clip_id
+		_sprite_frame_index = 0
+		_sprite_frame_timer = 0.0
+		_sprite_loop = loop
+		_sprite_durations = durations
+
+	var max_index := _sprite_durations.size() - 1
+	if _sprite_frame_index < 0:
+		_sprite_frame_index = 0
+	if _sprite_frame_index > max_index:
+		_sprite_frame_index = 0 if _sprite_loop else max_index
+
+	_sprite_frame_timer += delta * 1000.0
+	while _sprite_frame_index <= max_index:
+		var current_duration := float(_sprite_durations[_sprite_frame_index])
+		if current_duration <= 0.0:
+			_sprite_frame_index = max_index
+			_sprite_frame_timer = 0.0
+			break
+		if _sprite_frame_timer < current_duration:
+			break
+		_sprite_frame_timer -= current_duration
+		if _sprite_frame_index < max_index:
+			_sprite_frame_index += 1
+		else:
+			if _sprite_loop:
+				_sprite_frame_index = 0
+			else:
+				_sprite_frame_timer = 0.0
+				break
+
+	var body_path := _sprite_path(clip_id, _sprite_frame_index)
+	_sprite_set_texture(_sprite_body, body_path)
+
+	if state in ["attack_ground", "attack_air", "attack_crouch"]:
+		var whip_clip_id := "whip_" + state
+		var whip_path := ""
+		if _sprite_clip_data.has(whip_clip_id):
+			whip_path = _sprite_path(whip_clip_id, _sprite_frame_index)
+		else:
+			whip_path = "res://art/frames/whip_%s/f%03d.png" % [state, _sprite_frame_index]
+		_sprite_set_texture(_sprite_whip, whip_path)
+	else:
+		_sprite_whip.visible = false
+
+	var current_facing := _sprite_get_facing()
+	_sprite_body.position = Vector2(-256 * current_facing, -448)
+	_sprite_body.scale.x = current_facing
+	_sprite_whip.position = Vector2(-256 * current_facing, -448)
+	_sprite_whip.scale.x = current_facing
+
+
+func _sprite_path(clip_id: String, frame_index: int) -> String:
+	var clip_data = _sprite_clip_data.get(clip_id, {})
+	if typeof(clip_data) != TYPE_DICTIONARY:
+		return "res://art/frames/%s/f%03d.png" % [clip_id, frame_index]
+
+	var frames: Array = clip_data.get("frames", [])
+	if frames.is_empty():
+		return "res://art/frames/%s/f%03d.png" % [clip_id, frame_index]
+
+	if frame_index < 0:
+		frame_index = 0
+	if frame_index >= frames.size():
+		frame_index = frames.size() - 1
+
+	var frame_name := str(frames[frame_index])
+	if frame_name.begins_with("res://"):
+		return frame_name
+	return "res://art/frames/%s/%s" % [clip_id, frame_name]
+
+
+func _sprite_set_texture(sprite: Sprite2D, path: String) -> void:
+	if path.is_empty():
+		sprite.visible = false
+		return
+	if _sprite_texture_cache.has(path):
+		sprite.texture = _sprite_texture_cache[path]
+		sprite.visible = true
+		return
+	if not ResourceLoader.exists(path):
+		sprite.visible = false
+		return
+
+	var tex = load(path)
+	if tex == null or not (tex is Texture2D):
+		sprite.visible = false
+		return
+
+	_sprite_texture_cache[path] = tex
+	sprite.texture = tex
+	sprite.visible = true
+
+
+func _sprite_get_facing() -> int:
+	var facing_val = get("facing")
+	if facing_val != null:
+		var f := int(facing_val)
+		if f != 0:
+			return 1 if f > 0 else -1
+
+	if velocity.x != 0.0:
+		_sprite_last_facing = 1 if velocity.x > 0 else -1
+
+	return _sprite_last_facing
